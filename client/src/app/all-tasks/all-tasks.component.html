@@ -1,0 +1,13 @@
+<div class="jumbotron py-2 mb-2 mx-auto bg-light shadow" *ngFor="let task of tasks">
+  <div class="row">
+    <div class="custom-control custom-checkbox col-1 p-0">
+      <input class="w-100 h-100" type="checkbox" id="{{ task._id }}" [checked]="task.completed" (click)="checkTask(id, task)">
+    </div>
+
+    <div class="col-10">
+      <h5>{{ task.title }}</h5>
+      <small>{{ task.description }}</small>
+    </div>
+  </div>
+</div>
+<button class="btn btn-primary btn-block" routerLink="/create">Add New Task</button>

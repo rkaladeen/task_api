@@ -19,7 +19,7 @@ class TaskController {
     }
     update(req, res){
       Task.findOneAndUpdate({_id: req.params._id}, req.body, {runValidators: true})
-            .then(() => res.json({status: "ok"}))
+            .then(() => res.json({status: "update successful"}))
             .catch(err => res.json(err));
     }
     remove(req, res){

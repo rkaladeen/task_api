@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpService } from './http.service';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +7,10 @@ import { HttpService } from './http.service';
 })
 export class AppComponent {
   title = 'Welcome to Tasks';
-  tasks: any = "";
 
-  constructor(private _httpService: HttpService) { }
+  constructor() { }
 
   ngOnInit() {
-    let observable = this._httpService.getAll();
-    observable.subscribe(data => {
-      this.tasks = data;
-    })
   }
 
 }

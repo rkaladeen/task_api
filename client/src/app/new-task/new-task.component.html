@@ -1,0 +1,12 @@
+<form class="jumbotron p-2 mt-2 shadow" (ngSubmit)="onSubmit(newTask)">
+  <h5>Add Task </h5>
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" name="newTask.title" [(ngModel)]="newTask.title">
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea type="text" class="form-control" name="newTask.description" rows="3" [(ngModel)]="newTask.description"></textarea>
+  </div>
+  <button class="btn btn-outline-primary" type="submit">Submit</button>
+</form>
