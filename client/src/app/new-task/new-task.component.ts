@@ -21,12 +21,12 @@ export class NewTaskComponent implements OnInit {
     })
   }
 
-  onSubmit(data: Object): void {
-    let newTask = { 
-      "title": data['title'],
-      "description": data['description'] 
+  onSubmit(): void {
+    let task = { 
+      "title": this.newTask['title'],
+      "description": this.newTask['description'] 
     }
-    let taskObservable = this._httpService.createTask(newTask);
+    let taskObservable = this._httpService.createTask(task);
     taskObservable.subscribe(data => {
       this.router.navigate(['/']);
     })

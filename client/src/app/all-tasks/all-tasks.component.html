@@ -1,13 +1,27 @@
-<div class="jumbotron py-2 mb-2 mx-auto bg-light shadow" *ngFor="let task of tasks">
-  <div class="row">
-    <div class="custom-control custom-checkbox col-1 p-0">
-      <input class="w-100 h-100" type="checkbox" id="{{ task._id }}" [checked]="task.completed" (click)="checkTask(id, task)">
-    </div>
 
-    <div class="col-10">
-      <h5>{{ task.title }}</h5>
-      <small>{{ task.description }}</small>
-    </div>
-  </div>
-</div>
+<table class="table" style="border-collapse:separate; border-spacing:0 0.8rem;">
+
+  <tr class="jumbotron py-2 mb-2 mx-auto bg-light shadow" *ngFor="let task of tasks">
+    
+      <td class="align-middle">
+        <input class=""
+               style="width: 4rem; height: 4rem;" 
+               type="checkbox" 
+               id="{{ task._id }}" 
+               [checked]="task.completed" 
+               (click)="checkTask($event.target.checked, task)">
+      </td>
+    
+  
+      <td class="align-middle">
+        <h5>{{ task.title }}</h5>
+        <small>{{ task.description }}</small>
+      </td>
+      <td class="align-middle text-right">
+        <button class="btn btn-warning btn-sm far fa-edit text-white mr-1" routerLink="/edit/{{task._id}}"></button>
+        <button class="btn btn-danger btn-sm far fa-trash-alt text-white" (click)="deleteTask(task._id)"></button>
+      </td>
+    
+  </tr>
+</table>
 <button class="btn btn-primary btn-block" routerLink="/create">Add New Task</button>

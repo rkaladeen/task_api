@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { HttpService } from '../http.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-all-tasks',
@@ -8,7 +10,7 @@ import { HttpService } from '../http.service';
 })
 export class AllTasksComponent implements OnInit {
   tasks: any = "";
-  constructor(private _httpService: HttpService) { }
+  constructor(private _httpService: HttpService, private router: Router) { }
 
   ngOnInit() {
     let observable = this._httpService.getAll();
@@ -26,7 +28,14 @@ export class AllTasksComponent implements OnInit {
     taskObservable.subscribe(data => {
       console.log(data);
     })
-    
+  }
+
+  deleteTask(task_id: String): void {
+    let taskObservable = this._httpService.deleteTask(task_id);
+    taskObservable.subscribe(data => {
+      console.log(data);
+      this.ngOnInit();
+    })
   }
 
 }

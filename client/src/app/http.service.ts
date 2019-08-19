@@ -7,16 +7,24 @@ import { HttpClient } from '@angular/common/http';
 export class HttpService {
   constructor(private _http: HttpClient) { }
 
-  getAll(){
+  getAll() {
     return this._http.get("/tasks");
   }
 
-  createTask(newTask: Object){
+  getOne(task_id: String) {
+    return this._http.get(`/tasks/${task_id}`);
+  }
+
+  createTask(newTask: Object) {
     return this._http.post("/tasks", newTask);
   }
 
-  updateTask(updateTask: Object){
+  updateTask(updateTask: Object) {
     return this._http.put(`/tasks/${updateTask['_id']}`, updateTask);
+  }
+
+  deleteTask(deleteTask: String) {
+    return this._http.delete(`/tasks/${deleteTask}`);
   }
 
 }

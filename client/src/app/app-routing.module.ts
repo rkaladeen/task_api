@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AllTasksComponent } from './all-tasks/all-tasks.component';
 import { NewTaskComponent } from './new-task/new-task.component';
+import { UpdateTaskComponent } from './update-task/update-task.component';
 
 const routes: Routes = [
   { path: '', component: AllTasksComponent },
-  { path: 'create', component: NewTaskComponent}
+  { path: 'create', component: NewTaskComponent},
+  { path: 'edit/:id', component: UpdateTaskComponent }
 ];
 
 @NgModule({
